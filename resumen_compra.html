@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resumen de Compra</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="compra.css" />
+  </head>
+  <header>
+    <a href="Inicio.php"><img src="img/logo.png" alt="" /></a>
+    <h1>RESUMEN DE COMPRA</h1>
+  </header>
+  <body>
+    <div id="resumen-container"></div>
+    <div id="pago-container">
+      <h2>Selecciona el método de pago</h2>
+      <form id="pago-form">
+        <label for="metodo-pago">Método de Pago:</label>
+        <select id="metodo-pago" name="metodo-pago" required>
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+          <option value="paypal">PayPal</option>
+        </select>
+        <div id="tarjeta-datos" style="display: none">
+          <label for="numero-tarjeta">Número de Tarjeta:</label>
+          <input
+            type="text"
+            id="numero-tarjeta"
+            name="numero-tarjeta"
+            pattern="\d{16}"
+            placeholder="1234 5678 9012 3456"
+          />
+          <label for="fecha-expiracion">Fecha de Expiración:</label>
+          <input
+            type="text"
+            id="fecha-expiracion"
+            name="fecha-expiracion"
+            placeholder="MM/AA"
+          />
+          <label for="cvv">CVV:</label>
+          <input
+            type="text"
+            id="cvv"
+            name="cvv"
+            pattern="\d{3}"
+            placeholder="123"
+          />
+        </div>
+        <div id="paypal-datos" style="display: none">
+          <label for="correo-paypal">Correo Electrónico de PayPal:</label>
+          <input
+            type="email"
+            id="correo-paypal"
+            name="correo-paypal"
+            placeholder="ejemplo@correo.com"
+          />
+        </div>
+        <button type="submit">Finalizar Compra</button>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const success = urlParams.get("success");
+
+      function formatearTotal(total) {
+        const valorNumerico = parseFloat(total);
+        return valorNumerico.toFixed(2);
+      }
+
+      if (success === "true") {
+        const detallesCompraEncoded = urlParams.get("detallesCompra");
+        const detallesCompra = JSON.parse(
+          decodeURIComponent(detallesCompraEncoded)
+        );
+        const totalGeneral = urlParams.get("totalGeneral");
+        const resumenContainer = document.getElementById("resumen-container");
+        const detallesElement = document.createElement("div");
+        const totalElement = document.createElement("p");
+
+        detallesElement.innerHTML = "<h2>Detalles de Compra</h2>";
+        detallesCompra.forEach((detalle) => {
+          const detalleElement = document.createElement("h3");
+          detalleElement.textContent = `-${detalle.nombre} (Cantidad: ${detalle.cantidad}) - $${detalle.subtotal}`;
+          detallesElement.appendChild(detalleElement);
+        });
+
+        const totalFormateado = formatearTotal(totalGeneral);
+        totalElement.innerHTML = `<strong>Total: $${totalFormateado}</strong>`;
+
+        resumenContainer.appendChild(detallesElement);
+        resumenContainer.appendChild(totalElement);
+      } else {
+        const errorElement = document.createElement("p");
+        errorElement.textContent = "Ocurrió un error al procesar la compra.";
+        document.body.appendChild(errorElement);
+      }
+
+      document
+        .getElementById("metodo-pago")
+        .addEventListener("change", function () {
+          const tarjetaDatos = document.getElementById("tarjeta-datos");
+          const paypalDatos = document.getElementById("paypal-datos");
+
+          tarjetaDatos.style.display = "none";
+          paypalDatos.style.display = "none";
+
+          if (this.value === "tarjeta") {
+            tarjetaDatos.style.display = "block";
+          } else if (this.value === "paypal") {
+            paypalDatos.style.display = "block";
+          }
+        });
+
+      document
+        .getElementById("pago-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          Swal.fire({
+            title: "Compra realizada correctamente",
+            text: "Recibirás tus productos en breve.",
+            icon: "success",
+            confirmButtonText: "OK",
+            customClass: {
+              popup: "swal2-popup",
+            },
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "Inicio.php";
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

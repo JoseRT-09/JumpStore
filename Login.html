@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="cssinicio.css" />
+    <script src="aplicarconf.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="img/logo.png" class="logo" alt="" />
+    </header>
+    <form action="sesion.php" method="post" class="is" onsubmit="envio()">
+      <div class="box">
+        <label for="usuario">Usuario</label>
+        <input type="text" name="usuario" id="usu" />
+      </div>
+      <div class="box">
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="contraseña" id="contra" />
+      </div>
+      <button type="submit" class="boton" name="inicio">Iniciar sesión</button>
+      <button type="button" class="boton" onclick="listarUsuarios()">
+        Listar
+      </button>
+    </form>
+    <div>
+      <a href="registro.html">Registrarse</a>
+    </div>
+    <div id="lista-usuarios"></div>
+    <footer>
+      <div class="redes-container">
+        <a href="https://www.instagram.com/"
+          ><img class="redes" src="img/instagram.png"
+        /></a>
+        <a href="https://web.whatsapp.com/"
+          ><img class="redes" src="img/whatsapp.png"
+        /></a>
+        <a href="https://twitter.com/?lang=es"
+          ><img class="redes" src="img/twitter.png"
+        /></a>
+      </div>
+      <div class="soporte-container">
+        <a href="Contacto.html">
+          <span class="soporte-texto">Soporte Técnico</span>
+          <img class="redes" src="img/apoyo.png" />
+        </a>
+      </div>
+    </footer>
+    <script>
+      function listarUsuarios() {
+        fetch("listar_usuarios.php")
+          .then((response) => response.json())
+          .then((usuarios) => {
+            let mensaje = "";
+            usuarios.forEach((usuario) => {
+              mensaje += usuario + "\n";
+            });
+            alert(mensaje);
+          })
+          .catch((error) => {
+            console.error("Error al listar usuarios:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

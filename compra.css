@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+body {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #171823;
+    color: #fff;
+}
+#resumen-container, #pago-container {
+    background-color: #1F1F3A;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    flex-direction: column;
+    align-items: center; 
+    border-radius: 10px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    margin-bottom: 20px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.logo::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+h1 {
+    font-size: 2.4em;
+    margin: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+strong {
+    font-size: 1.5rem;
+}
+img {
+    margin-right: 20px;
+}
+button {
+    background-color: #4CAF50;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    color: white;
+    padding: 10px 20px;
+    align-self: center;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+input {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+}

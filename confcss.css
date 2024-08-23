@@ -1,0 +1,23 @@
+footer {
+    background-color: #1F1F3A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .redes-container {
+    display: flex;
+  }
+  
+  .redes {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <link rel="stylesheet" href="cssmenus.css" />
+    <script src="aplicarconf.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>REGISTRATE</h1>
+      <a href="Login.html"><img src="img/logo.png" alt="" /></a>
+    </header>
+    <form action="Registrar.php" method="post" class="registro">
+      <div class="contenedor">
+        <div class="izq">
+          <div class="reg">
+            <label class="c" for="usuarior">Usuario</label>
+            <input
+              class="c"
+              type="text"
+              name="rusuario"
+              id="usuarior"
+              required
+            />
+          </div>
+          <div class="reg">
+            <label class="c" for="nombre">Nombre</label>
+            <input class="c" type="text" name="rnombre" id="nombre" required />
+          </div>
+          <div class="reg">
+            <label class="c" for="edad">Edad</label>
+            <input
+              class="c"
+              type="number"
+              name="redad"
+              id="edad"
+              min="0"
+              max="110"
+              required
+            />
+          </div>
+          <div class="reg">
+            <label class="c" for="correo">Correo</label>
+            <input class="c" type="email" name="rcorreo" id="correo" required />
+          </div>
+          <div class="reg">
+            <label class="c" for="telefono">Telefono</label>
+            <input
+              class="c"
+              type="tel"
+              name="rtelefono"
+              id="telefono"
+              required
+            />
+          </div>
+        </div>
+        <div class="der">
+          <div class="reg">
+            <label class="c" for="contraseña">Contraseña</label>
+            <input
+              class="c"
+              type="password"
+              name="rcontraseña"
+              id="contraseña"
+            />
+          </div>
+          <div class="reg">
+            <label class="c" for="Ccontrasña">Confirmar contraseña</label>
+            <input
+              class="c"
+              type="password"
+              name="rccontraseña"
+              id="Ccontrasña"
+            />
+          </div>
+        </div>
+      </div>
+      <button class="botonr" name="registrar">Registrar</button>
+      <button class="botonr" name="eliminar">Eliminar</button>
+    </form>
+    <footer>
+      <div class="redes-container">
+        <a href="https://www.instagram.com/"
+          ><img class="redes" src="img/instagram.png"
+        /></a>
+        <a href="https://web.whatsapp.com/"
+          ><img class="redes" src="img/whatsapp.png"
+        /></a>
+        <a href="https://twitter.com/?lang=es"
+          ><img class="redes" src="img/twitter.png"
+        /></a>
+      </div>
+      <div class="soporte-container">
+        <a href="Contacto.html">
+          <span class="soporte-texto">Soporte Técnico</span>
+          <img class="redes" src="img/apoyo.png" />
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

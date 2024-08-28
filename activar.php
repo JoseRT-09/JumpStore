@@ -1,3 +1,4 @@
+//Comentario
 <?php
 include("conexion.php");
 

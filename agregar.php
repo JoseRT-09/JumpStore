@@ -1,3 +1,4 @@
+//Bueno amigos esto sirve para...
 <?php
 include("conexion.php");
 
